@@ -1,0 +1,25 @@
+
+create table students1 (student_id int, stuednt_name varchar(50), course_id int); 
+
+insert into students1 values
+(1,'Alice',101),
+(2,'Borice',102),
+(3,'Katya',103);
+
+select course_id, stuednt_name, student_id from students1
+intersect
+select course_id, teacher_name, teacher_id from teachers;
+
+select stuednt_name, teacher_name from students1
+inner join 
+teachers on students1.course_id = teachers.course_id;
+
+select student_id, stuednt_name, course_id from students1
+except 
+select teacher_id, teacher_name, course_id from teachers where teachers.course_id = teachers.course_id;
+
+select course_id from students1
+right join teachers on teachers.course_id = students.course_id;
+
+select s.student_id, s.stuednt_name, s.course_id from students1 s
+right join teachers t on s.course_id = t.course_id;
